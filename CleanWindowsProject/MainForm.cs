@@ -7,162 +7,110 @@ namespace CleanWindowsProject
 {
     public partial class MainForm : Form
     {
+        public readonly string install = "winget install";
         public MainForm()
         {
             InitializeComponent();
-            EnforceAdminPrivilegesWorkaround();
-        }
-
-        private void edgeRemoveBtn_Click(object sender, EventArgs e)
-        {
-            executeScript("Remove-Edge.bat");
         }
 
         private void discordBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Discord.bat");
-        }
-
-        private void executeScript(string script)
-        {
-            Process p = new Process();
-            p.StartInfo.UseShellExecute = false;
-            //p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.FileName = script;
-            //p.StartInfo.CreateNoWindow = true;
-            p.Start();
-            //outputBox.Text = "";
-            //while (!p.HasExited) { outputBox.Text += p.StandardOutput.ReadLine(); }
-            p.WaitForExit();
-        }
-
-        public static void EnforceAdminPrivilegesWorkaround()
-        {
-            RegistryKey rk;
-            string registryPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\";
-
-            try
-            {
-                if (Environment.Is64BitOperatingSystem)
-                {
-                    rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
-                }
-                else
-                {
-                    rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-                }
-
-                rk = rk.OpenSubKey(registryPath, true);
-            }
-            catch (System.Security.SecurityException)
-            {
-                MessageBox.Show("Please run as administrator");
-                Environment.Exit(1);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            Process.Start("CMD.exe", $"/K {install} --id=Discord.Discord -e -h");
         }
 
         private void zipBtn_Click(object sender, EventArgs e)
         {
-            executeScript("7-Zip.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=7zip.7zip -e -h");
         }
 
         private void iTunesBtn_Click(object sender, EventArgs e)
         {
-            executeScript("iTunes.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Apple.iTunes -e -h");
         }
 
         private void cpuzBtn_Click(object sender, EventArgs e)
         {
-            executeScript("CPU-Z.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=CPUID.CPU-Z -e -h");
         }
 
         private void githubBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Github.bat");
-        }
-
-        private void irfanBtn_Click(object sender, EventArgs e)
-        {
-            executeScript("IrfanView.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=GitHub.GitHubDesktop -e -h");
         }
 
         private void wemodBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Wemod.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=WeMod.WeMod -e -h");
         }
 
         private void qbitBtn_Click(object sender, EventArgs e)
         {
-            executeScript("qBittorrent.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=qBittorrent.qBittorrent -e -h");
         }
 
         private void keepassBtn_Click(object sender, EventArgs e)
         {
-            executeScript("KeePass.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=KeePassXCTeam.KeePassXC -e -h");
         }
 
         private void libreBtn_Click(object sender, EventArgs e)
         {
-            executeScript("LibreOffice.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=TheDocumentFoundation.LibreOffice -e -h");
         }
 
         private void visualstudioBtn_Click(object sender, EventArgs e)
         {
-            executeScript("VisualStudio.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Microsoft.VisualStudio.2022.Community.Preview -e -h");
         }
 
         private void steamBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Steam.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Valve.Steam -e -h");
         }
 
         private void firefoxBtn_Click(object sender, EventArgs e)
         {
-            executeScript("FireFox.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Mozilla.Firefox -e -h");
         }
 
         private void notepadBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Notepad++.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Notepad++.Notepad++ -e -h");
         }
 
         private void gpuzBtn_Click(object sender, EventArgs e)
         {
-            executeScript("GPU-Z.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=TechPowerUp.GPU-Z -e -h");
         }
 
         private void veracryptBtn_Click(object sender, EventArgs e)
         {
-            executeScript("VeraCrypt.bat");
-        }
-
-        private void vlcBtn_Click(object sender, EventArgs e)
-        {
-            executeScript("VLC.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=IDRIX.VeraCrypt -e -h");
         }
 
         private void windirstatBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Windirstat.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=WinDirStat.WinDirStat -e -h");
         }
 
         private void bcuninstallerBtn_Click(object sender, EventArgs e)
         {
-            executeScript("BCUninstaller.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Klocman.BulkCrapUninstaller -e -h");
         }
 
         private void installAllBtn_Click(object sender, EventArgs e)
         {
-            executeScript("InstallAll.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Discord.Discord -e -h");
         }
 
         private void telegramBtn_Click(object sender, EventArgs e)
         {
-            executeScript("Telegram.bat");
+            Process.Start("CMD.exe", $"/K {install} --id=Telegram.TelegramDesktop -e -h");
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -111,6 +110,16 @@ namespace CleanWindowsProject
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void infoBtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("CMD.exe", $"/K {install} --id=CrystalDewWorld.CrystalDiskInfo -e -h");
+        }
+
+        private void markBtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("CMD.exe", $"/K {install} --id=CrystalDewWorld.CrystalDiskMark -e -h");
         }
     }
 }

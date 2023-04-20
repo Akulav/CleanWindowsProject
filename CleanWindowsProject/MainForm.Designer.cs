@@ -105,6 +105,7 @@
             this.markBtn.TabIndex = 28;
             this.markBtn.Text = "CrystaldiskMARK";
             this.markBtn.UseVisualStyleBackColor = true;
+            this.markBtn.Click += new System.EventHandler(this.markBtn_Click);
             // 
             // infoBtn
             // 
@@ -114,6 +115,7 @@
             this.infoBtn.TabIndex = 27;
             this.infoBtn.Text = "CrystaldiskINFO";
             this.infoBtn.UseVisualStyleBackColor = true;
+            this.infoBtn.Click += new System.EventHandler(this.infoBtn_Click);
             // 
             // eraserBtn
             // 
@@ -328,7 +330,7 @@
             this.Controls.Add(this.tweakPanel);
             this.Controls.Add(this.installPanel);
             this.Name = "MainForm";
-            this.Text = "CleanWindows - Made by Caty V1.0";
+            this.Text = "CleanWindows - Made by Caty V1.1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.installPanel.ResumeLayout(false);
             this.installPanel.PerformLayout();
